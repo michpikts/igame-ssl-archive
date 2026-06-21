@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于 ayx · 功能与用法简介</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f7f9fc;
+      color: #1d2b3e;
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(145deg, #0a1628 0%, #1c2a44 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: #d4a74e;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #e8edf2;
+      margin-bottom: 0.75rem;
+    }
+    .hero .sub {
+      font-size: 1.15rem;
+      color: #a6b7d0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .tagline {
+      margin-top: 1.6rem;
+      display: inline-block;
+      background: rgba(212, 167, 78, 0.18);
+      padding: 0.4rem 1.8rem;
+      border-radius: 40px;
+      color: #eace8b;
+      font-size: 0.95rem;
+      backdrop-filter: blur(2px);
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.8rem 4rem;
+    }
+    .intro-block {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem 2.2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+      margin-bottom: 2.2rem;
+    }
+    .intro-block p {
+      margin-bottom: 1.2rem;
+    }
+    .intro-block p:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      color: #b8863d;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border 0.2s, color 0.2s;
+    }
+    a:hover {
+      color: #8b6a30;
+      border-bottom-color: #c29a4e;
+    }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.8rem;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.02);
+      border: 1px solid #eef2f6;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #1d2b3e;
+      position: relative;
+      padding-left: 1.3rem;
+    }
+    .card h3::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: #d4a74e;
+      font-weight: 700;
+      font-size: 1.7rem;
+      line-height: 1;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #3c4a5c;
+    }
+    .scenario {
+      margin: 2.5rem 0 1.8rem;
+      padding: 1.8rem 2rem;
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      border-radius: 20px;
+      border: 1px solid #e6ecf3;
+    }
+    .scenario h2 {
+      font-size: 1.5rem;
+      font-weight: 450;
+      margin-bottom: 0.8rem;
+      color: #0a1628;
+    }
+    .scenario ul {
+      list-style: none;
+      padding: 0;
+    }
+    .scenario li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #eef2f8;
+      display: flex;
+      align-items: flex-start;
+    }
+    .scenario li:last-child {
+      border-bottom: none;
+    }
+    .scenario li::before {
+      content: '→';
+      color: #b8863d;
+      margin-right: 1rem;
+      font-weight: 400;
+    }
+    .faq-mini {
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0 1.5rem;
+      border: 1px solid #e3e9f1;
+    }
+    .faq-mini h3 {
+      font-weight: 450;
+      margin-bottom: 0.5rem;
+      color: #1b283b;
+    }
+    .faq-mini p {
+      font-size: 0.95rem;
+      margin-bottom: 1.6rem;
+      color: #3a4b62;
+    }
+    .faq-mini p:last-of-type {
+      margin-bottom: 0;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #5d6f83;
+      background: #eef3f9;
+      padding: 1rem 1.5rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-top: 1.2rem;
+      border: 1px solid #dce5ef;
+    }
+    footer {
+      text-align: center;
+      padding: 1.8rem 1.2rem 2.5rem;
+      background: #edf2f8;
+      color: #4a5b70;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 3rem 1.2rem; }
+      .intro-block { padding: 1.8rem 1.2rem; }
+      .card h3 { font-size: 1.1rem; }
+      .scenario { padding: 1.4rem; }
+      .faq-mini { padding: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1>关于 ayx</h1>
+    <div class="sub">一个想让你快速了解其用途的网站</div>
+    <div class="tagline">产品简要说明 · 亮点 · 使用提示</div>
+  </section>
+
+  <div class="container">
+    <div class="intro-block">
+      <p>如果你正在寻找一个能帮你梳理某些信息的站点，也许 <a href="https://igame-ssl.com">ayx</a> 能派上用场。它算不上什么大平台，但设计时考虑了实际的使用场景——快速定位、清晰呈现，没有多余的干扰。很多人第一次打开后，花几分钟就能判断它是否适合自己。</p>
+      <p>下面整理了它几个比较明显的特点，以及一些使用时的建议，供你参考。</p>
+    </div>
+
+    <div class="highlights-grid">
+      <div class="card">
+        <h3>摘要式入口</h3>
+        <p>首页将主要功能抽象为几个卡片或列表，减少阅读负担。你不需要翻遍整个菜单才能找到想要的东西。</p>
+      </div>
+      <div class="card">
+        <h3>克制的信息密度</h3>
+        <p>每个页面都尽量保持单一任务流，不堆叠弹窗或侧边促销。专注度更高，误操作的概率也低一些。</p>
+      </div>
+      <div class="card">
+        <h3>基础交互反馈</h3>
+        <p>点击、悬停、加载都有相对克制的反馈，不过度动画，也不至于完全僵硬。适合对效率有点要求的人。</p>
+      </div>
+    </div>
+
+    <div class="scenario">
+      <h2>什么情况下可能会用到它</h2>
+      <ul>
+        <li>你需要集中浏览某类内容，但又不想被算法推荐带偏节奏。</li>
+        <li>你更倾向一个相对安静的页面环境——没有自动播放的音频或闪烁的横幅。</li>
+        <li>你想测试或对比一些轻量级功能，但不想安装额外软件或注册复杂账号。</li>
+        <li>你只是好奇 <a href="https://igame-ssl.com">ayx</a> 提供了什么，花几分钟看看，再决定是否留下来。</li>
+      </ul>
+    </div>
+
+    <div class="faq-mini">
+      <h3>常见想法 · 简答</h3>
+      <p><strong>这个网站主要做什么？</strong><br>它提供一个简洁的界面，让你快速获取某些信息或进行特定操作。具体用途建议直接打开首页浏览一下，比任何描述都直观。</p>
+      <p><strong>使用前需要准备什么？</strong><br>现代浏览器即可，无需安装插件。部分功能可能依赖 JavaScript，保持默认开启就好。</p>
+      <p><strong>数据或隐私方面呢？</strong><br>建议在使用前查看网站自身的说明或隐私相关页面。作为外部介绍，我们建议你基于自己的判断使用任何在线服务。</p>
+    </div>
+
+    <div class="note">
+      ⚡ 适用人群：喜欢自己探索、希望网站少一点“引导”、多一点效率的人。
+    </div>
+  </div>
+
+  <footer>
+    <span>本页仅为产品说明式介绍 · 内容仅供参考 · 实际体验以 <a href="https://igame-ssl.com">ayx</a> 为准</span>
+  </footer>
+</body>
+</html>
